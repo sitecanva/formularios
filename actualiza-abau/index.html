@@ -493,7 +493,6 @@
       inputNombre.addEventListener('input', () => {
         const start = inputNombre.selectionStart;
         const end = inputNombre.selectionEnd;
-        // Convertir a mayúscula y remover signos de puntuación / números / símbolos
         inputNombre.value = inputNombre.value.toUpperCase().replace(/[^A-ZÁÉÍÓÚÑ\s]/g, '');
         if (start !== null && end !== null) {
           inputNombre.setSelectionRange(start, end);
@@ -501,11 +500,14 @@
       });
     }
 
-    // 2. Eliminación automática del 0 si ingresan el prefijo 0700 -> 700
+    // 2. Auto-corrección dinámica para número de servicio (02... -> 2... y 0700... -> 700...)
     if (inputServicio) {
       inputServicio.addEventListener('input', () => {
         let val = inputServicio.value;
-        if (val.startsWith('0700')) {
+        if (val.startsWith('02')) {
+          val = val.substring(1);
+          inputServicio.value = val;
+        } else if (val.startsWith('0700')) {
           val = val.substring(1);
           inputServicio.value = val;
         }
