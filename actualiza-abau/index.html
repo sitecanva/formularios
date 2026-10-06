@@ -316,11 +316,11 @@
           <input type="text" 
                  id="nombre" 
                  name="entry.285449584" 
-                 placeholder="Ej: MARÍA PÉREZ" 
-                 pattern="^[A-ZÁÉÍÓÚÑ\s]+$" 
+                 placeholder="Ej: JOSE PEREZ" 
+                 pattern="^[A-ZÑ\s]+$" 
                  title="Introduzca el texto en mayúscula" 
                  required>
-          <span class="ayuda">Introduzca el texto en mayúscula sin signos de puntuación.</span>
+          <span class="ayuda">Introduzca el texto en mayúscula sin acentos ni signos de puntuación.</span>
           <span class="error-text" id="error-nombre"></span>
         </div>
 
@@ -488,12 +488,18 @@
       correo_alternativo: 'Formato estándar de correo electrónico válido.'
     };
 
-    // 1. Conversión automática dinámica a MAYÚSCULAS y eliminación de signos de puntuación/símbolos
+    // 1. Conversión automática dinámica a MAYÚSCULAS y eliminación de acentos, signos de puntuación y números
     if (inputNombre) {
       inputNombre.addEventListener('input', () => {
         const start = inputNombre.selectionStart;
         const end = inputNombre.selectionEnd;
-        inputNombre.value = inputNombre.value.toUpperCase().replace(/[^A-ZÁÉÍÓÚÑ\s]/g, '');
+        // Convertir a mayúscula, descomponer acentos (normalize NFD) y remover acentos/puntuación/símbolos
+        inputNombre.value = inputNombre.value
+          .toUpperCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^A-ZÑ\s]/g, "");
+          
         if (start !== null && end !== null) {
           inputNombre.setSelectionRange(start, end);
         }
