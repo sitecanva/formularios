@@ -514,6 +514,20 @@
       });
     }
 
+    // 3. Auto-corrección dinámica para números celulares (04... -> 4...)
+    const inputCelular1 = document.getElementById('celular1');
+    const inputCelular2 = document.getElementById('celular2');
+    [inputCelular1, inputCelular2].forEach(inputCel => {
+      if (inputCel) {
+        inputCel.addEventListener('input', () => {
+          let val = inputCel.value;
+          if (val.startsWith('04')) {
+            inputCel.value = val.substring(1);
+          }
+        });
+      }
+    });
+
     // Funciones Modal Bienvenida
     function ocultarModalBienvenida() {
       modalBienvenida.classList.remove('active');
