@@ -25,7 +25,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* Neon Baseball Container Box (Matching Reference Image) */
+/* Neon Baseball Container Box */
 .neon-baseball-border {
   position: relative;
   border-radius: 28px;
