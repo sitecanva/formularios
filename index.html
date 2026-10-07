@@ -93,7 +93,9 @@
       color: #a0aec0;
     }
 
-    input {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
       padding: 0.75rem;
       font-size: 0.95rem;
       border: 1px solid #cbd5e0;
@@ -107,7 +109,9 @@
       text-transform: uppercase;
     }
 
-    input:focus {
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    input[type="email"]:focus {
       outline: none;
       border-color: #0032A1;
       box-shadow: 0 0 0 3px rgba(0, 50, 161, 0.15);
@@ -116,6 +120,36 @@
     input.invalid-input {
       border-color: #e53e3e;
       box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
+    }
+
+    /* Estilos para la casilla de verificación de declaración */
+    .campo-checkbox {
+      margin-top: 0.4rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      width: 1.15rem;
+      height: 1.15rem;
+      margin-top: 0.15rem;
+      cursor: pointer;
+      accent-color: #0032A1;
+      flex-shrink: 0;
+    }
+
+    .checkbox-container label {
+      font-weight: 500;
+      font-size: 0.84rem;
+      color: #334155;
+      line-height: 1.4;
+      cursor: pointer;
+      margin-bottom: 0;
     }
 
     .ayuda {
@@ -399,6 +433,18 @@
           <span class="error-text" id="error-correo_alternativo"></span>
         </div>
 
+        <!-- Casilla de declaración de veracidad (Obligatoria) -->
+        <div class="campo campo-checkbox">
+          <div class="checkbox-container">
+            <input type="checkbox" 
+                   id="declaracion" 
+                   name="declaracion" 
+                   required>
+            <label for="declaracion">Declaro que la información proporcionada es veraz y correcta, y autorizo su verificación en caso de ser necesario.</label>
+          </div>
+          <span class="error-text" id="error-declaracion"></span>
+        </div>
+
         <button type="submit" id="btnEnviar">Enviar datos</button>
       </form>
 
@@ -485,7 +531,8 @@
       celular1: 'Introduzca el número sin el cero (0)',
       celular2: 'Introduzca el número sin el cero (0)',
       correo_principal: 'Formato estándar de correo electrónico válido.',
-      correo_alternativo: 'Formato estándar de correo electrónico válido.'
+      correo_alternativo: 'Formato estándar de correo electrónico válido.',
+      declaracion: 'Debes aceptar esta declaración para continuar'
     };
 
     // 1. Conversión automática dinámica a MAYÚSCULAS y eliminación de acentos, signos de puntuación y números
@@ -562,8 +609,23 @@
 
     function validarCampo(input) {
       const errorSpan = document.getElementById(`error-${input.id}`);
-      const val = input.value.trim();
       const esRequerido = input.hasAttribute('required');
+
+      if (input.type === 'checkbox') {
+        if (!input.checked) {
+          input.setCustomValidity('Debes aceptar esta declaración para continuar');
+          if (errorSpan) errorSpan.textContent = 'Debes aceptar esta declaración para continuar';
+          input.classList.add('invalid-input');
+          return false;
+        } else {
+          input.setCustomValidity('');
+          if (errorSpan) errorSpan.textContent = '';
+          input.classList.remove('invalid-input');
+          return true;
+        }
+      }
+
+      const val = input.value.trim();
 
       if (val === '') {
         if (esRequerido) {
@@ -604,6 +666,12 @@
       input.addEventListener('input', () => {
         validarCampo(input);
       });
+
+      if (input.type === 'checkbox') {
+        input.addEventListener('change', () => {
+          validarCampo(input);
+        });
+      }
     });
 
     function mostrarModalExito() {
