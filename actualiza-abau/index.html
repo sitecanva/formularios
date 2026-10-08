@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualiza tus datos Cantv</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      margin: auto;
+    }
+
+    .card-banner {
+      width: 100%;
+      display: block;
+      line-height: 0;
+    }
+
+    .card-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .card-header {
+      padding: 1.5rem 1.75rem 0.5rem 1.75rem;
+      text-align: center;
+    }
+
+    .card-header h2 {
+      margin: 0 0 0.35rem 0;
+      color: #1e3a8a;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .card-header .subtitulo {
+      font-size: 0.88rem;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .card-body {
+      padding: 1.25rem 1.75rem 1.75rem 1.75rem;
+    }
+
+    .campo {
+      margin-bottom: 1.15rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .label-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #2d3748;
+      margin-bottom: 0.4rem;
+    }
+
+    .label-container label {
+      margin-bottom: 0;
+    }
+
+    .opcional {
+      font-size: 0.8rem;
+      color: #a0aec0;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      padding: 0.75rem;
+      font-size: 0.95rem;
+      border: 1px solid #cbd5e0;
+      border-radius: 8px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    #nombre {
+      text-transform: uppercase;
+    }
+
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    input[type="email"]:focus {
+      outline: none;
+      border-color: #0032A1;
+      box-shadow: 0 0 0 3px rgba(0, 50, 161, 0.15);
+    }
+
+    input.invalid-input {
+      border-color: #e53e3e;
+      box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
+    }
+
+    /* Estilos para la casilla de verificación de declaración */
+    .campo-checkbox {
+      margin-top: 0.4rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      width: 1.15rem;
+      height: 1.15rem;
+      margin-top: 0.15rem;
+      cursor: pointer;
+      accent-color: #0032A1;
+      flex-shrink: 0;
+    }
+
+    .checkbox-container label {
+      font-weight: 500;
+      font-size: 0.84rem;
+      color: #334155;
+      line-height: 1.4;
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+
+    .ayuda {
+      font-size: 0.78rem;
+      color: #718096;
+      margin-top: 0.35rem;
+    }
+
+    .error-text {
+      font-size: 0.78rem;
+      color: #e53e3e;
+      font-weight: 600;
+      margin-top: 0.25rem;
+    }
+
+    button {
+      padding: 0.85rem;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #0032A1;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      width: 100%;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+      margin-top: 0.5rem;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: #002270;
+    }
+
+    button:disabled {
+      background-color: #a0aec0;
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    #mensaje {
+      margin-top: 1.25rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-align: center;
+      min-height: 1.2rem;
+    }
+
+    /* Modal emergente (Popup) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 1.25rem;
+      box-sizing: border-box;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      position: relative;
+      background: #ffffff;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      padding: 2.25rem 1.75rem 1.75rem 1.75rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      transform: scale(0.85);
+      transition: transform 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .btn-cerrar-x {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #94a3b8;
+      cursor: pointer;
+      width: auto;
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+      transition: color 0.2s ease;
+    }
+
+    .btn-cerrar-x:hover {
+      color: #0f172a;
+      background: none;
+    }
+
+    .modal-icon {
+      width: 68px;
+      height: 68px;
+      background-color: #e0e7ff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 1.25rem auto;
+    }
+
+    .modal-content h3 {
+      margin: 0 0 0.75rem 0;
+      color: #0f172a;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+
+    .modal-content p {
+      margin: 0 0 1.5rem 0;
+      color: #475569;
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    .modal-content button:not(.btn-cerrar-x) {
+      background-color: #0032A1;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem;
+      font-size: 1rem;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      margin-top: 0;
+    }
+
+    .modal-content button:not(.btn-cerrar-x):hover {
+      background-color: #002270;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- Banner superior -->
+    <div class="card-banner">
+      <img src="https://i.ibb.co/TMjf30s9/banner-abaultra-foms.jpg" alt="banner abaultra foms" border="0">
+    </div>
+
+    <!-- Título y subtítulo -->
+    <div class="card-header">
+      <h2>Actualiza tus datos Cantv</h2>
+      <p class="subtitulo">Ingresa tus datos para procesar la actualización.</p>
+    </div>
+
+    <!-- Campos del formulario -->
+    <div class="card-body">
+      <form id="miFormulario"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSdcH64uCQr7bxqqAoEGgu4QVrV65e_z8_1VKK7zrM2jCOCNLw/formResponse"
+            method="POST"
+            target="hidden_iframe"
+            novalidate>
+
+        <!-- 1. Número Cantv o Aba Ultra -->
+        <div class="campo">
+          <label for="servicio">Número Cantv o Aba Ultra:</label>
+          <input type="text" 
+                 id="servicio" 
+                 name="entry.1500725622" 
+                 placeholder="Ej: 2121234567 o 7001234567" 
+                 pattern="^(2\d{9}|700\d{7})$" 
+                 title="10 dígitos iniciando con 2, o 10 dígitos iniciando con 700." 
+                 required>
+          <span class="ayuda">10 dígitos iniciando con 2 (ej. 2121234567), o 10 dígitos iniciando con 700 (ej. 7001234567).</span>
+          <span class="error-text" id="error-servicio"></span>
+        </div>
+
+        <!-- 2. Nombre y apellido del titular -->
+        <div class="campo">
+          <label for="nombre">Nombre y apellido del titular:</label>
+          <input type="text" 
+                 id="nombre" 
+                 name="entry.285449584" 
+                 placeholder="Ej: JOSE PEREZ" 
+                 pattern="^[A-ZÑ\s]+$" 
+                 title="Introduzca el texto en mayúsculas." 
+                 required>
+          <span class="ayuda">Introduzca el texto en mayúsculas sin acentos ni signos de puntuación.</span>
+          <span class="error-text" id="error-nombre"></span>
+        </div>
+
+        <!-- 3. Cédula de Identidad del titular -->
+        <div class="campo">
+          <label for="cedula">Cédula de Identidad del titular:</label>
+          <input type="text" 
+                 id="cedula" 
+                 name="entry.411099277" 
+                 placeholder="Ej: 12345678" 
+                 pattern="^\d{1,8}$" 
+                 maxlength="8" 
+                 title="Solo dígitos numéricos (máximo 8 números)." 
+                 required>
+          <span class="ayuda">Solo dígitos numéricos (máximo 8 números).</span>
+          <span class="error-text" id="error-cedula"></span>
+        </div>
+
+        <!-- 4. Número celular de contacto (1) -->
+        <div class="campo">
+          <label for="celular1">Número celular de contacto (1):</label>
+          <input type="tel" 
+                 id="celular1" 
+                 name="entry.1804223365" 
+                 placeholder="Ej: 4121234567" 
+                 pattern="^(412|414|416|424|422|426)\d{7}$" 
+                 title="Introduzca el número sin el cero (0)." 
+                 required>
+          <span class="ayuda">Prefijos móviles nacionales (412, 414, 416, 424, 422, 426) sin el 0 inicial.</span>
+          <span class="error-text" id="error-celular1"></span>
+        </div>
+
+        <!-- 5. Número celular de contacto (2) -->
+        <div class="campo">
+          <div class="label-container">
+            <label for="celular2">Número celular de contacto (2):</label>
+            <span class="opcional">(Opcional)</span>
+          </div>
+          <input type="tel" 
+                 id="celular2" 
+                 name="entry.870009800" 
+                 placeholder="Ej: 4147654321" 
+                 pattern="^((412|414|416|424|422|426)\d{7})?$" 
+                 title="Introduzca el número sin el cero (0).">
+          <span class="ayuda">Opcional. Si se introduce, debe cumplir con el formato móvil sin el 0 inicial.</span>
+          <span class="error-text" id="error-celular2"></span>
+        </div>
+
+        <!-- 6. Correo electrónico principal -->
+        <div class="campo">
+          <label for="correo_principal">Correo electrónico principal:</label>
+          <input type="email" 
+                 id="correo_principal" 
+                 name="entry.580840075" 
+                 placeholder="usuario@dominio.com" 
+                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                 title="Formato estándar de correo electrónico válido." 
+                 required>
+          <span class="ayuda">Formato estándar de correo electrónico válido.</span>
+          <span class="error-text" id="error-correo_principal"></span>
+        </div>
+
+        <!-- 7. Correo electrónico alternativo -->
+        <div class="campo">
+          <div class="label-container">
+            <label for="correo_alternativo">Correo electrónico alternativo:</label>
+            <span class="opcional">(Opcional)</span>
+          </div>
+          <input type="email" 
+                 id="correo_alternativo" 
+                 name="entry.1066804588" 
+                 placeholder="alternativo@dominio.com" 
+                 pattern="^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})?$" 
+                 title="Formato estándar de correo electrónico válido.">
+          <span class="ayuda">Opcional. Formato estándar de correo electrónico válido.</span>
+          <span class="error-text" id="error-correo_alternativo"></span>
+        </div>
+
+        <!-- Casilla de declaración de veracidad (Obligatoria) -->
+        <div class="campo campo-checkbox">
+          <div class="checkbox-container">
+            <input type="checkbox" 
+                   id="declaracion" 
+                   name="declaracion" 
+                   required>
+            <label for="declaracion">Declaro que la información proporcionada es veraz y correcta, y autorizo su verificación en caso de ser necesario.</label>
+          </div>
+          <span class="error-text" id="error-declaracion"></span>
+        </div>
+
+        <button type="submit" id="btnEnviar">Enviar datos</button>
+      </form>
+
+      <!-- iframe oculto para procesar el envío sin recargar la página -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+      <p id="mensaje"></p>
+    </div>
+  </div>
+
+  <!-- Modal Popup 1: Bienvenida (Flotante al iniciar) -->
+  <div id="modalBienvenida" class="modal-overlay active">
+    <div class="modal-content">
+      <button type="button" class="btn-cerrar-x" id="btnCerrarBienvenidaX" aria-label="Cerrar">&times;</button>
+      <div class="modal-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0032A1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+      </div>
+      <h3>¡Bienvenido al formulario de actualización de datos Cantv!</h3>
+      <p>Mantener tu información al día nos permite brindarte una mejor atención, garantizar la continuidad de tu servicio y notificarte oportunamente sobre mejoras, novedades y soporte técnico.</p>
+      <button type="button" id="btnEntendidoBienvenida">Entendido</button>
+    </div>
+  </div>
+
+  <!-- Modal Popup 2: Éxito (Post-envío) -->
+  <div id="modalExito" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0032A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h3>¡Solicitud recibida con éxito!</h3>
+      <p>Tus datos serán actualizados.</p>
+      <button type="button" id="btnCerrarModalExito">Aceptar</button>
+    </div>
+  </div>
+
+  <!-- Modal Popup 3: Cambio de Titularidad (Tras aceptar modal de éxito) -->
+  <div id="modalTitularidad" class="modal-overlay">
+    <div class="modal-content">
+      <button type="button" class="btn-cerrar-x" id="btnCerrarTitularidadX" aria-label="Cerrar">&times;</button>
+      <div class="modal-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#0032A1" stroke="#0032A1" stroke-width="1">
+          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+        </svg>
+      </div>
+      <h3>Cambio de titularidad</h3>
+      <p>Si deseas realizar un cambio de titularidad de tu servicio, puedes dirigirte a cualquier oficina comercial de Cantv.</p>
+      <button type="button" id="btnCerrarTitularidad">Aceptar</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('miFormulario');
+    const mensaje = document.getElementById('mensaje');
+    const btnEnviar = document.getElementById('btnEnviar');
+    const iframe = document.getElementById('hidden_iframe');
+    const inputs = document.querySelectorAll('#miFormulario input');
+    const inputNombre = document.getElementById('nombre');
+    const inputServicio = document.getElementById('servicio');
+
+    // Modal 1: Bienvenida
+    const modalBienvenida = document.getElementById('modalBienvenida');
+    const btnCerrarBienvenidaX = document.getElementById('btnCerrarBienvenidaX');
+    const btnEntendidoBienvenida = document.getElementById('btnEntendidoBienvenida');
+
+    // Modal 2: Éxito
+    const modalExito = document.getElementById('modalExito');
+    const btnCerrarModalExito = document.getElementById('btnCerrarModalExito');
+
+    // Modal 3: Titularidad
+    const modalTitularidad = document.getElementById('modalTitularidad');
+    const btnCerrarTitularidad = document.getElementById('btnCerrarTitularidad');
+    const btnCerrarTitularidadX = document.getElementById('btnCerrarTitularidadX');
+
+    const mensajesError = {
+      servicio: '10 dígitos iniciando con 2, o 10 dígitos iniciando con 700.',
+      nombre: 'Introduzca el texto en mayúsculas.',
+      cedula: 'Solo dígitos numéricos (máximo 8 números).',
+      celular1: 'Introduzca el número sin el cero (0).',
+      celular2: 'Introduzca el número sin el cero (0).',
+      correo_principal: 'Formato estándar de correo electrónico válido.',
+      correo_alternativo: 'Formato estándar de correo electrónico válido.',
+      declaracion: 'Debes aceptar esta declaración para continuar.'
+    };
+
+    // 1. Conversión automática dinámica a MAYÚSCULAS y eliminación de acentos, signos de puntuación y números
+    if (inputNombre) {
+      inputNombre.addEventListener('input', () => {
+        const start = inputNombre.selectionStart;
+        const end = inputNombre.selectionEnd;
+        inputNombre.value = inputNombre.value
+          .toUpperCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^A-ZÑ\s]/g, "");
+          
+        if (start !== null && end !== null) {
+          inputNombre.setSelectionRange(start, end);
+        }
+      });
+    }
+
+    // 2. Auto-corrección dinámica para número de servicio (02... -> 2... y 0700... -> 700...)
+    if (inputServicio) {
+      inputServicio.addEventListener('input', () => {
+        let val = inputServicio.value;
+        if (val.startsWith('02')) {
+          val = val.substring(1);
+          inputServicio.value = val;
+        } else if (val.startsWith('0700')) {
+          val = val.substring(1);
+          inputServicio.value = val;
+        }
+      });
+    }
+
+    // 3. Auto-corrección dinámica para números celulares (04... -> 4...)
+    const inputCelular1 = document.getElementById('celular1');
+    const inputCelular2 = document.getElementById('celular2');
+    [inputCelular1, inputCelular2].forEach(inputCel => {
+      if (inputCel) {
+        inputCel.addEventListener('input', () => {
+          let val = inputCel.value;
+          if (val.startsWith('04')) {
+            inputCel.value = val.substring(1);
+          }
+        });
+      }
+    });
+
+    // Funciones Modal Bienvenida
+    function ocultarModalBienvenida() {
+      modalBienvenida.classList.remove('active');
+    }
+    if (btnCerrarBienvenidaX) btnCerrarBienvenidaX.addEventListener('click', ocultarModalBienvenida);
+    if (btnEntendidoBienvenida) btnEntendidoBienvenida.addEventListener('click', ocultarModalBienvenida);
+    modalBienvenida.addEventListener('click', (e) => {
+      if (e.target === modalBienvenida) ocultarModalBienvenida();
+    });
+
+    // Funciones Transición Modal Éxito -> Modal Titularidad
+    function ocultarExitoYMostrarTitularidad() {
+      modalExito.classList.remove('active');
+      modalTitularidad.classList.add('active');
+    }
+    btnCerrarModalExito.addEventListener('click', ocultarExitoYMostrarTitularidad);
+
+    // Funciones Modal Titularidad
+    function ocultarModalTitularidad() {
+      modalTitularidad.classList.remove('active');
+    }
+    if (btnCerrarTitularidad) btnCerrarTitularidad.addEventListener('click', ocultarModalTitularidad);
+    if (btnCerrarTitularidadX) btnCerrarTitularidadX.addEventListener('click', ocultarModalTitularidad);
+    modalTitularidad.addEventListener('click', (e) => {
+      if (e.target === modalTitularidad) ocultarModalTitularidad();
+    });
+
+    function validarCampo(input) {
+      const errorSpan = document.getElementById(`error-${input.id}`);
+      const esRequerido = input.hasAttribute('required');
+
+      if (input.type === 'checkbox') {
+        if (!input.checked) {
+          input.setCustomValidity('Debes aceptar esta declaración para continuar.');
+          if (errorSpan) errorSpan.textContent = 'Debes aceptar esta declaración para continuar.';
+          input.classList.add('invalid-input');
+          return false;
+        } else {
+          input.setCustomValidity('');
+          if (errorSpan) errorSpan.textContent = '';
+          input.classList.remove('invalid-input');
+          return true;
+        }
+      }
+
+      const val = input.value.trim();
+
+      if (val === '') {
+        if (esRequerido) {
+          input.setCustomValidity('Completa este campo.');
+          if (errorSpan) errorSpan.textContent = 'Completa este campo.';
+          input.classList.add('invalid-input');
+          return false;
+        } else {
+          input.setCustomValidity('');
+          if (errorSpan) errorSpan.textContent = '';
+          input.classList.remove('invalid-input');
+          return true;
+        }
+      }
+
+      if (input.pattern) {
+        const regex = new RegExp(input.pattern);
+        if (!regex.test(val)) {
+          const msg = mensajesError[input.id] || input.title || 'Formato no válido.';
+          input.setCustomValidity(msg);
+          if (errorSpan) errorSpan.textContent = msg;
+          input.classList.add('invalid-input');
+          return false;
+        }
+      }
+
+      input.setCustomValidity('');
+      if (errorSpan) errorSpan.textContent = '';
+      input.classList.remove('invalid-input');
+      return true;
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener('blur', () => {
+        validarCampo(input);
+      });
+
+      input.addEventListener('input', () => {
+        validarCampo(input);
+      });
+
+      if (input.type === 'checkbox') {
+        input.addEventListener('change', () => {
+          validarCampo(input);
+        });
+      }
+    });
+
+    function mostrarModalExito() {
+      modalExito.classList.add('active');
+    }
+
+    let enviado = false;
+
+    form.addEventListener('submit', (e) => {
+      let todoValido = true;
+      inputs.forEach(input => {
+        if (!validarCampo(input)) {
+          todoValido = false;
+        }
+      });
+
+      if (!todoValido) {
+        e.preventDefault();
+        return;
+      }
+
+      btnEnviar.disabled = true;
+      btnEnviar.textContent = 'Enviando información...';
+      enviado = true;
+    });
+
+    iframe.addEventListener('load', () => {
+      if (enviado) {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = 'Enviar datos';
+        form.reset();
+        inputs.forEach(input => {
+          const errorSpan = document.getElementById(`error-${input.id}`);
+          if (errorSpan) errorSpan.textContent = '';
+          input.classList.remove('invalid-input');
+        });
+        enviado = false;
+        mostrarModalExito();
+      }
+    });
+  </script>
+
+</body>
+</html>
