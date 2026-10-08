@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Actualiza tu datos Cantv</title>
+  <title>Actualiza tus datos Cantv</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -318,7 +318,7 @@
 
     <!-- Título y subtítulo -->
     <div class="card-header">
-      <h2>Actualiza tu datos Cantv</h2>
+      <h2>Actualiza tus datos Cantv</h2>
       <p class="subtitulo">Ingresa tus datos para procesar la actualización.</p>
     </div>
 
@@ -352,9 +352,9 @@
                  name="entry.285449584" 
                  placeholder="Ej: JOSE PEREZ" 
                  pattern="^[A-ZÑ\s]+$" 
-                 title="Introduzca el texto en mayúscula" 
+                 title="Introduzca el texto en mayúsculas." 
                  required>
-          <span class="ayuda">Introduzca el texto en mayúscula sin acentos ni signos de puntuación.</span>
+          <span class="ayuda">Introduzca el texto en mayúsculas sin acentos ni signos de puntuación.</span>
           <span class="error-text" id="error-nombre"></span>
         </div>
 
@@ -381,7 +381,7 @@
                  name="entry.1804223365" 
                  placeholder="Ej: 4121234567" 
                  pattern="^(412|414|416|424|422|426)\d{7}$" 
-                 title="Introduzca el número sin el cero (0)" 
+                 title="Introduzca el número sin el cero (0)." 
                  required>
           <span class="ayuda">Prefijos móviles nacionales (412, 414, 416, 424, 422, 426) sin el 0 inicial.</span>
           <span class="error-text" id="error-celular1"></span>
@@ -398,7 +398,7 @@
                  name="entry.870009800" 
                  placeholder="Ej: 4147654321" 
                  pattern="^((412|414|416|424|422|426)\d{7})?$" 
-                 title="Introduzca el número sin el cero (0)">
+                 title="Introduzca el número sin el cero (0).">
           <span class="ayuda">Opcional. Si se introduce, debe cumplir con el formato móvil sin el 0 inicial.</span>
           <span class="error-text" id="error-celular2"></span>
         </div>
@@ -481,7 +481,7 @@
         </svg>
       </div>
       <h3>¡Solicitud recibida con éxito!</h3>
-      <p>Tus datos serán actualizados</p>
+      <p>Tus datos serán actualizados.</p>
       <button type="button" id="btnCerrarModalExito">Aceptar</button>
     </div>
   </div>
@@ -496,7 +496,7 @@
         </svg>
       </div>
       <h3>Cambio de titularidad</h3>
-      <p>Si deseas realizar un cambio de titularidad de tu servicio puedes dirigirte a cualquier oficina comercial de Cantv</p>
+      <p>Si deseas realizar un cambio de titularidad de tu servicio, puedes dirigirte a cualquier oficina comercial de Cantv.</p>
       <button type="button" id="btnCerrarTitularidad">Aceptar</button>
     </div>
   </div>
@@ -526,13 +526,13 @@
 
     const mensajesError = {
       servicio: '10 dígitos iniciando con 2, o 10 dígitos iniciando con 700.',
-      nombre: 'Introduzca el texto en mayúscula',
+      nombre: 'Introduzca el texto en mayúsculas.',
       cedula: 'Solo dígitos numéricos (máximo 8 números).',
-      celular1: 'Introduzca el número sin el cero (0)',
-      celular2: 'Introduzca el número sin el cero (0)',
+      celular1: 'Introduzca el número sin el cero (0).',
+      celular2: 'Introduzca el número sin el cero (0).',
       correo_principal: 'Formato estándar de correo electrónico válido.',
       correo_alternativo: 'Formato estándar de correo electrónico válido.',
-      declaracion: 'Debes aceptar esta declaración para continuar'
+      declaracion: 'Debes aceptar esta declaración para continuar.'
     };
 
     // 1. Conversión automática dinámica a MAYÚSCULAS y eliminación de acentos, signos de puntuación y números
@@ -613,8 +613,8 @@
 
       if (input.type === 'checkbox') {
         if (!input.checked) {
-          input.setCustomValidity('Debes aceptar esta declaración para continuar');
-          if (errorSpan) errorSpan.textContent = 'Debes aceptar esta declaración para continuar';
+          input.setCustomValidity('Debes aceptar esta declaración para continuar.');
+          if (errorSpan) errorSpan.textContent = 'Debes aceptar esta declaración para continuar.';
           input.classList.add('invalid-input');
           return false;
         } else {
@@ -629,8 +629,8 @@
 
       if (val === '') {
         if (esRequerido) {
-          input.setCustomValidity('Completa este campo');
-          if (errorSpan) errorSpan.textContent = 'Completa este campo';
+          input.setCustomValidity('Completa este campo.');
+          if (errorSpan) errorSpan.textContent = 'Completa este campo.';
           input.classList.add('invalid-input');
           return false;
         } else {
@@ -644,7 +644,7 @@
       if (input.pattern) {
         const regex = new RegExp(input.pattern);
         if (!regex.test(val)) {
-          const msg = mensajesError[input.id] || input.title || 'Formato no válido';
+          const msg = mensajesError[input.id] || input.title || 'Formato no válido.';
           input.setCustomValidity(msg);
           if (errorSpan) errorSpan.textContent = msg;
           input.classList.add('invalid-input');
