@@ -37,9 +37,9 @@
           
           <!-- Neon Box Container with single 1Baseball Network Logo -->
           <div class="neon-baseball-border shadow-2xl backdrop-blur-md transform hover:scale-105 transition-transform duration-300">
-            <div class="neon-baseball-inner flex items-center justify-center px-8 sm:px-16 py-6 sm:py-8">
+            <div class="neon-baseball-inner flex items-center justify-center px-6 sm:px-10 py-3.5 sm:py-5">
               <!-- Single Transparent PNG Logo Inside Neon Box -->
-              <img src="https://i.ibb.co/zVsfX3Ds/1baseball-logo-removebg-preview.png" alt="1baseball logo" class="h-28 sm:h-36 md:h-40 w-auto object-contain drop-shadow-[0_0_24px_rgba(255,0,127,0.75)]">
+              <img src="https://i.ibb.co/zVsfX3Ds/1baseball-logo-removebg-preview.png" alt="1baseball logo" class="h-16 sm:h-20 md:h-24 w-auto object-contain drop-shadow-[0_0_18px_rgba(255,0,127,0.7)]">
             </div>
           </div>
 
@@ -140,6 +140,12 @@
             <p id="error-telefono" class="text-xs text-red-500 font-semibold mt-1 hidden"></p>
           </div>
 
+          <div>
+            <label for="email" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1">Correo electrónico del servicio Aba TV GO donde se activará el Plan One Baseball Network:*</label>
+            <input type="email" id="email" name="entry.1514035788" required placeholder="Ej. usuario@correo.com" class="custom-input px-3.5 py-2.5 rounded-lg w-full text-sm font-medium">
+            <p id="error-email" class="text-xs text-red-500 font-semibold mt-1 hidden"></p>
+          </div>
+
           <div class="pt-2">
             <button type="submit" id="submit-btn" class="glow-magenta-btn w-full text-white font-bold py-3 px-6 rounded-full text-base transition-all duration-300 flex items-center justify-center gap-2">
               <span id="btn-text">Enviar</span>
@@ -176,6 +182,7 @@
         <div id="confirmation-details" class="w-full bg-slate-900/90 border border-white/10 rounded-xl p-4 text-xs text-left space-y-2 text-slate-300 mb-6">
           <p><span class="font-semibold text-slate-400">Cliente:</span> <span id="summary-name" class="text-white font-bold">Juan Pérez</span></p>
           <p><span class="font-semibold text-slate-400">Cédula:</span> <span id="summary-cedula" class="text-white font-bold">12345678</span></p>
+          <p><span class="font-semibold text-slate-400">Correo Aba TV GO:</span> <span id="summary-email" class="text-white font-bold">usuario@correo.com</span></p>
           <p><span class="font-semibold text-slate-400">Monto de la suscripción:</span> <span class="text-pink-400 font-bold">Ref. 5 / mes</span></p>
         </div>
 

@@ -39,7 +39,7 @@ function validateField(inputEl, errorEl, regex, errorMsg) {
   }
 }
 
-function sendToGoogleForms(nombre, cedula, telefono) {
+function sendToGoogleForms(nombre, cedula, telefono, email) {
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScwbCtcG7Q2rmvRAaEMkimxKildQi3n_CQEYhyWDRbVoMAx_A/formResponse";
   
   // 1. Envío vía fetch no-cors
@@ -47,6 +47,7 @@ function sendToGoogleForms(nombre, cedula, telefono) {
   params.append('entry.909119026', nombre);
   params.append('entry.1103888847', cedula);
   params.append('entry.1622098092', telefono);
+  params.append('entry.1514035788', email);
 
   try {
     fetch(googleFormUrl, {
@@ -95,6 +96,12 @@ function sendToGoogleForms(nombre, cedula, telefono) {
     inputTelefono.value = telefono;
     tempForm.appendChild(inputTelefono);
 
+    const inputEmail = document.createElement('input');
+    inputEmail.type = 'hidden';
+    inputEmail.name = 'entry.1514035788';
+    inputEmail.value = email;
+    tempForm.appendChild(inputEmail);
+
     document.body.appendChild(tempForm);
     tempForm.submit();
     setTimeout(() => {
@@ -113,10 +120,12 @@ async function handleFormSubmit(e) {
   const nombreInput = document.getElementById('nombre');
   const cedulaInput = document.getElementById('cedula');
   const telefonoInput = document.getElementById('telefono');
+  const emailInput = document.getElementById('email');
 
   const errorNombre = document.getElementById('error-nombre');
   const errorCedula = document.getElementById('error-cedula');
   const errorTelefono = document.getElementById('error-telefono');
+  const errorEmail = document.getElementById('error-email');
 
   // Auto-eliminar 0 inicial o +58
   let rawTelefono = telefonoInput.value.trim();
@@ -131,18 +140,21 @@ async function handleFormSubmit(e) {
   const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,60}$/;
   const regexCedula = /^\d{1,8}$/;
   const regexTelefono = /^(416|426|414|424|412|422)\d{7}$/;
+  const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const isValidNombre = validateField(nombreInput, errorNombre, regexNombre, "Ingresa un nombre y apellido válido (solo letras).");
   const isValidCedula = validateField(cedulaInput, errorCedula, regexCedula, "Ingresa una cédula válida (solo números, máximo 8 dígitos).");
   const isValidTelefono = validateField(telefonoInput, errorTelefono, regexTelefono, "Ingresa un número válido con prefijo 416, 426, 414, 424, 412 o 422 (Ej. 4141234567).");
+  const isValidEmail = validateField(emailInput, errorEmail, regexEmail, "Ingresa un correo electrónico válido (Ej. usuario@correo.com).");
 
-  if (!isValidNombre || !isValidCedula || !isValidTelefono) {
+  if (!isValidNombre || !isValidCedula || !isValidTelefono || !isValidEmail) {
     return;
   }
 
   const nombre = nombreInput.value.trim();
   const cedula = cedulaInput.value.trim();
   const telefono = rawTelefono;
+  const email = emailInput.value.trim();
 
   // Indicador de carga
   const submitBtn = document.getElementById('submit-btn');
@@ -156,11 +168,12 @@ async function handleFormSubmit(e) {
   }
 
   // Garantizar el registro en Google Forms / Google Sheets
-  sendToGoogleForms(nombre, cedula, telefono);
+  sendToGoogleForms(nombre, cedula, telefono, email);
 
   // Poblar Resumen Paso 4
   document.getElementById('summary-name').innerText = nombre;
   document.getElementById('summary-cedula').innerText = cedula;
+  document.getElementById('summary-email').innerText = email;
 
   if (btnText && btnSpinner) {
     btnText.innerText = "Enviar";
