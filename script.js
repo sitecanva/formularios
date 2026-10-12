@@ -144,7 +144,7 @@ async function handleFormSubmit(e) {
 
   const isValidNombre = validateField(nombreInput, errorNombre, regexNombre, "Ingresa un nombre y apellido válido (solo letras).");
   const isValidCedula = validateField(cedulaInput, errorCedula, regexCedula, "Ingresa una cédula válida (solo números, máximo 8 dígitos).");
-  const isValidTelefono = validateField(telefonoInput, errorTelefono, regexTelefono, "Ingresa un número válido con prefijo 416, 426, 414, 424, 412 o 422 (Ej. 4141234567).");
+  const isValidTelefono = validateField(telefonoInput, errorTelefono, regexTelefono, "Ingresa un número celular de contacto válido con prefijo 416, 426, 414, 424, 412 o 422 (Ej. 4141234567).");
   const isValidEmail = validateField(emailInput, errorEmail, regexEmail, "Ingresa un correo electrónico válido (Ej. usuario@correo.com).");
 
   if (!isValidNombre || !isValidCedula || !isValidTelefono || !isValidEmail) {
@@ -173,6 +173,7 @@ async function handleFormSubmit(e) {
   // Poblar Resumen Paso 4
   document.getElementById('summary-name').innerText = nombre;
   document.getElementById('summary-cedula').innerText = cedula;
+  document.getElementById('summary-telefono').innerText = telefono;
   document.getElementById('summary-email').innerText = email;
 
   if (btnText && btnSpinner) {
