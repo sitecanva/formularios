@@ -70,15 +70,15 @@
     }
 
     .campo {
-      margin-bottom: 1.15rem;
+      margin-bottom: 0.95rem;
       display: flex;
       flex-direction: column;
     }
 
     .campo-checkbox {
       flex-direction: column;
-      margin-top: 0.75rem;
-      margin-bottom: 1.25rem;
+      margin-top: 0.65rem;
+      margin-bottom: 1.15rem;
     }
 
     .checkbox-label {
@@ -106,14 +106,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     label {
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: #2d3748;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     .label-container label {
@@ -128,8 +128,8 @@
     input[type="text"],
     input[type="tel"],
     input[type="email"] {
-      padding: 0.75rem;
-      font-size: 0.95rem;
+      padding: 0.72rem 0.85rem;
+      font-size: 0.93rem;
       border: 1px solid #cbd5e0;
       border-radius: 8px;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -146,12 +146,6 @@
     input.invalid-input {
       border-color: #e53e3e;
       box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
-    }
-
-    .ayuda {
-      font-size: 0.78rem;
-      color: #718096;
-      margin-top: 0.35rem;
     }
 
     .error-text {
@@ -311,7 +305,6 @@
                  pattern="^(2\d{9}|02\d{9})$" 
                  title="10 dígitos iniciando con 2, u 11 dígitos iniciando con 02." 
                  required>
-          <span class="ayuda">10 dígitos iniciando con 2, u 11 dígitos iniciando con 02.</span>
           <span class="error-text" id="error-servicio"></span>
         </div>
 
@@ -322,7 +315,6 @@
                  name="entry.287881507" 
                  placeholder="Ej: María Pérez" 
                  required>
-          <span class="ayuda">Texto sin límite de caracteres.</span>
           <span class="error-text" id="error-nombre"></span>
         </div>
 
@@ -336,7 +328,6 @@
                  maxlength="8" 
                  title="Solo dígitos numéricos (máximo 8 números)." 
                  required>
-          <span class="ayuda">Solo dígitos numéricos (máximo 8 números).</span>
           <span class="error-text" id="error-cedula"></span>
         </div>
 
@@ -349,7 +340,6 @@
                  pattern="^(0?(412|414|416|424|422|426)\d{7})$" 
                  title="Valide el número de teléfono." 
                  required>
-          <span class="ayuda">Prefijos móviles nacionales (0412, 0414, 0416, 0424, 0422, 0426).</span>
           <span class="error-text" id="error-celular1"></span>
         </div>
 
@@ -364,7 +354,6 @@
                  placeholder="Ej: 04147654321 o 4147654321" 
                  pattern="^(0?(412|414|416|424|422|426)\d{7})?$" 
                  title="Valide el número de teléfono.">
-          <span class="ayuda">Opcional. Si se introduce, debe cumplir con el formato móvil válido.</span>
           <span class="error-text" id="error-celular2"></span>
         </div>
 
@@ -377,7 +366,6 @@
                  pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
                  title="Formato estándar de correo electrónico válido." 
                  required>
-          <span class="ayuda">Formato estándar de correo electrónico válido.</span>
           <span class="error-text" id="error-correo"></span>
         </div>
 
