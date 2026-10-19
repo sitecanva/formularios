@@ -1,4 +1,5 @@
 let currentStep = 1;
+let isSubmitting = false;
 
 function goToStep(stepNumber) {
   currentStep = stepNumber;
@@ -42,7 +43,7 @@ function validateField(inputEl, errorEl, regex, errorMsg) {
 function sendToGoogleForms(nombre, cedula, telefono, email) {
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScwbCtcG7Q2rmvRAaEMkimxKildQi3n_CQEYhyWDRbVoMAx_A/formResponse";
   
-  // 1. Envío vía fetch no-cors
+  // Registro único y exclusivo de los datos del formulario (Sección 3)
   const params = new URLSearchParams();
   params.append('entry.909119026', nombre);
   params.append('entry.1103888847', cedula);
@@ -59,63 +60,16 @@ function sendToGoogleForms(nombre, cedula, telefono, email) {
       body: params.toString()
     });
   } catch (e) {
-    console.warn("Intento de envío fetch:", e);
-  }
-
-  // 2. Envío respaldo vía iframe oculto para garantizar registro en Google Sheets
-  try {
-    let hiddenIframe = document.getElementById('hidden-gform-iframe');
-    if (!hiddenIframe) {
-      hiddenIframe = document.createElement('iframe');
-      hiddenIframe.id = 'hidden-gform-iframe';
-      hiddenIframe.name = 'hidden-gform-iframe';
-      hiddenIframe.style.display = 'none';
-      document.body.appendChild(hiddenIframe);
-    }
-
-    const tempForm = document.createElement('form');
-    tempForm.action = googleFormUrl;
-    tempForm.method = 'POST';
-    tempForm.target = 'hidden-gform-iframe';
-
-    const inputNombre = document.createElement('input');
-    inputNombre.type = 'hidden';
-    inputNombre.name = 'entry.909119026';
-    inputNombre.value = nombre;
-    tempForm.appendChild(inputNombre);
-
-    const inputCedula = document.createElement('input');
-    inputCedula.type = 'hidden';
-    inputCedula.name = 'entry.1103888847';
-    inputCedula.value = cedula;
-    tempForm.appendChild(inputCedula);
-
-    const inputTelefono = document.createElement('input');
-    inputTelefono.type = 'hidden';
-    inputTelefono.name = 'entry.1622098092';
-    inputTelefono.value = telefono;
-    tempForm.appendChild(inputTelefono);
-
-    const inputEmail = document.createElement('input');
-    inputEmail.type = 'hidden';
-    inputEmail.name = 'entry.1514035788';
-    inputEmail.value = email;
-    tempForm.appendChild(inputEmail);
-
-    document.body.appendChild(tempForm);
-    tempForm.submit();
-    setTimeout(() => {
-      if (document.body.contains(tempForm)) {
-        document.body.removeChild(tempForm);
-      }
-    }, 1000);
-  } catch (err) {
-    console.warn("Envío iframe respaldo:", err);
+    console.warn("Error en envío:", e);
   }
 }
 
 async function handleFormSubmit(e) {
   e.preventDefault();
+
+  if (isSubmitting) {
+    return;
+  }
 
   const nombreInput = document.getElementById('nombre');
   const cedulaInput = document.getElementById('cedula');
@@ -151,6 +105,8 @@ async function handleFormSubmit(e) {
     return;
   }
 
+  isSubmitting = true;
+
   const nombre = nombreInput.value.trim();
   const cedula = cedulaInput.value.trim();
   const telefono = rawTelefono;
@@ -167,14 +123,20 @@ async function handleFormSubmit(e) {
     submitBtn.disabled = true;
   }
 
-  // Garantizar el registro en Google Forms / Google Sheets
+  // Envío ÚNICO de los datos del formulario de la Sección 3
   sendToGoogleForms(nombre, cedula, telefono, email);
 
-  // Poblar Resumen Paso 4
+  // Poblar Resumen Paso 4 (exclusivamente para visualización del usuario, sin reenvío)
   document.getElementById('summary-name').innerText = nombre;
   document.getElementById('summary-cedula').innerText = cedula;
   document.getElementById('summary-telefono').innerText = telefono;
   document.getElementById('summary-email').innerText = email;
+
+  // Limpiar campos del formulario para prevenir reenvíos duplicados
+  const formEl = document.getElementById('hbo-form');
+  if (formEl) {
+    formEl.reset();
+  }
 
   if (btnText && btnSpinner) {
     btnText.innerText = "Enviar";
@@ -182,5 +144,6 @@ async function handleFormSubmit(e) {
     submitBtn.disabled = false;
   }
 
+  isSubmitting = false;
   goToStep(4);
 }
