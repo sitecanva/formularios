@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aba TV GO - Paquete Premium One Baseball Network | Cantv</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-landing min-h-screen flex flex-col justify-center items-center text-white antialiased selection:bg-[#ff00a8] selection:text-white relative">
+
+  <!-- Main Container -->
+  <main class="w-full max-w-4xl mx-auto px-4 py-6 sm:py-8 flex flex-col justify-center items-center relative z-10 my-auto">
+
+    <!-- Header Logo ABA TV GO -->
+    <div class="mb-6 sm:mb-8 text-center transform hover:scale-105 transition-transform duration-300">
+      <img src="img/Logo-Aba-TV-GO-blanco.png" alt="Logo Aba TV GO blanco" class="h-16 sm:h-20 md:h-24 mx-auto">
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PASO 1: LANDING DE OFERTA PRINCIPAL -->
+    <!-- ========================================== -->
+    <section id="step-1" class="step-content active-step flex-col items-center text-center w-full max-w-4xl">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+        Paquete Premium<br>One Baseball Network
+      </h1>
+      <p class="text-slate-200 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 font-normal max-w-xl">
+        Actívalo ya y disfruta un espacio dedicado exclusivamente al béisbol y el mejor entretenimiento
+      </p>
+
+      <!-- Contenedor con Efecto Neón (2 Cajas Neón + Separador) -->
+      <div class="w-full mb-8 sm:mb-10 px-2">
+        <div class="flex flex-col md:flex-row items-stretch justify-center gap-6 max-w-3xl mx-auto">
+          
+          <!-- Caja con Efecto Neón 1: Aba TV GO -->
+          <div class="neon-baseball-border shadow-2xl backdrop-blur-md transform hover:scale-[1.02] transition-transform duration-300 w-full md:w-1/2 flex flex-col">
+            <div class="neon-baseball-inner flex flex-col items-center justify-between text-center px-6 sm:px-8 py-5 sm:py-6 h-full flex-1">
+              <div class="flex flex-col items-center w-full">
+                <div class="h-16 sm:h-20 flex items-center justify-center mb-3">
+                  <img src="img/Logo-Aba-TV-GO-blanco.png" alt="Logo Aba TV GO" class="h-12 sm:h-14 w-auto object-contain">
+                </div>
+                <span class="text-base sm:text-lg font-bold text-white tracking-wide">+120 canales en vivo</span>
+                <p class="text-xs sm:text-sm text-cyan-300 font-medium mt-1 mb-3">Sin costo adicional para usuarios Aba Ultra</p>
+                
+                <!-- Etiqueta llamativa -->
+                <div class="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/20 via-pink-500/20 to-cyan-500/20 border border-cyan-400/60 text-cyan-200 text-xs font-bold tracking-tight shadow-[0_0_15px_rgba(0,210,255,0.4)] mb-4 animate-pulse">
+                  <span>★</span> Activar únicamente Aba TV GO
+                </div>
+              </div>
+              <button onclick="selectPlan('abatvgo')" class="glow-magenta-btn text-white text-sm sm:text-base font-bold px-5 py-3 rounded-full cursor-pointer transition-all duration-300 transform active:scale-95 w-full shadow-lg">
+                Activar Aba TV GO (sin costo)
+              </button>
+            </div>
+          </div>
+
+          <!-- Caja con Efecto Neón 2: Paquete Premium One Baseball Network -->
+          <div class="neon-baseball-border shadow-2xl backdrop-blur-md transform hover:scale-[1.02] transition-transform duration-300 w-full md:w-1/2 flex flex-col">
+            <div class="neon-baseball-inner flex flex-col items-center justify-between text-center px-6 sm:px-8 py-5 sm:py-6 h-full flex-1">
+              <div class="flex flex-col items-center w-full">
+                <div class="h-16 sm:h-20 flex items-center justify-center mb-3">
+                  <img src="img/1baseball-logo-removebg-preview.png" alt="Logo One Baseball Network" class="h-16 sm:h-20 w-auto object-contain">
+                </div>
+                <span class="text-base sm:text-lg font-bold text-white tracking-wide">La LVBP en vivo</span>
+                <p class="text-xs sm:text-sm text-[#ff00a8] font-bold mt-1 mb-3">Ref. 5 / mes</p>
+                
+                <!-- Etiqueta llamativa -->
+                <div class="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/20 via-pink-500/20 to-cyan-500/20 border border-cyan-400/60 text-cyan-200 text-xs font-bold tracking-tight shadow-[0_0_15px_rgba(0,210,255,0.4)] mb-4 animate-pulse">
+                  <span>★</span> Incluye Aba TV GO (+120 canales) sin costo adicional
+                </div>
+              </div>
+              <button onclick="selectPlan('onebaseball')" class="glow-magenta-btn text-white text-sm sm:text-base font-bold px-5 py-3 rounded-full cursor-pointer transition-all duration-300 transform active:scale-95 w-full shadow-lg">
+                Suscribirme a One Baseball (Ref 5 /mes)
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Texto centrado debajo de ambas cajas -->
+        <div class="mt-8">
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-wide drop-shadow-lg">
+            ¿Listo para vivir toda la pasión del béisbol?
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- PASO 2.1: TÉRMINOS Y CONDICIONES (ABA TV GO) -->
+    <!-- ========================================== -->
+    <section id="step-2-1" class="step-content hidden-step flex-col items-center text-center w-full max-w-xl">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+        Aba TV GO
+      </h2>
+      <p class="text-cyan-300 font-semibold text-base sm:text-lg mb-6">
+        Plan Ultra (+120 canales)
+      </p>
+      
+      <h3 class="text-base sm:text-lg font-semibold text-slate-200 mb-6">
+        Términos y condiciones:
+      </h3>
+
+      <!-- Terms Card -->
+      <div class="text-left space-y-5 bg-slate-950/70 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl mb-8 w-full">
+        <div>
+          <p class="text-sm sm:text-base leading-relaxed text-slate-200">
+            <span class="font-bold text-[#00d2ff]">1. Servicio base:</span> El Plan Ultra de Aba TV GO (+120 canales) está incluido sin costo adicional para usuarios Aba Ultra.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm sm:text-base leading-relaxed text-slate-200">
+            <span class="font-bold text-[#00d2ff]">2. Notificación:</span> Recibirás un SMS cuando el servicio esté activo. Si estás activando Aba TV GO por primera vez, tus credenciales de acceso llegarán a tu correo electrónico registrado.
+          </p>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <button onclick="goToStep('3')" class="glow-magenta-btn text-white text-lg font-bold px-12 py-3.5 rounded-full cursor-pointer transition-all duration-300 transform active:scale-95 mb-4">
+        Activar Aba TV GO
+      </button>
+
+      <!-- Subtext -->
+      <p class="text-xs sm:text-sm text-slate-300 max-w-md leading-snug mb-4 sm:mb-6">
+        Al hacer clic en «Activar Aba TV GO» se activará tu servicio y aceptarás los términos y condiciones del servicio.
+      </p>
+
+      <!-- Botón Atrás con icono -->
+      <button onclick="goBack()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#ff00a8] bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(255,0,168,0.4)] transform active:scale-95">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Atrás</span>
+      </button>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- PASO 2.2: TÉRMINOS Y CONDICIONES (ONE BASEBALL NETWORK) -->
+    <!-- ========================================== -->
+    <section id="step-2-2" class="step-content hidden-step flex-col items-center text-center w-full max-w-xl">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+        Paquete Premium<br>One Baseball Network
+      </h2>
+      <p class="text-[#ff00a8] font-semibold text-base sm:text-lg mb-6">
+        Ref. 5 / mes
+      </p>
+      
+      <h3 class="text-base sm:text-lg font-semibold text-slate-200 mb-6">
+        Términos y condiciones:
+      </h3>
+
+      <!-- Terms Card -->
+      <div class="text-left space-y-5 bg-slate-950/70 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl mb-8 w-full">
+        <div>
+          <p class="text-sm sm:text-base leading-relaxed text-slate-200">
+            <span class="font-bold text-[#ff00a8]">1. Servicio base:</span> El Plan Ultra de Aba TV GO (+120 canales) está incluido sin costo adicional para usuarios Aba Ultra.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm sm:text-base leading-relaxed text-slate-200">
+            <span class="font-bold text-[#ff00a8]">2. Paquete premium:</span> La suscripción al Paquete Premium One Baseball Network tiene un costo de Ref. 5 al mes.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm sm:text-base leading-relaxed text-slate-200">
+            <span class="font-bold text-[#ff00a8]">3. Facturación:</span> El cargo mensual del paquete premium One Baseball Network (Ref.5) se reflejará en tu factura de Aba Ultra.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm sm:text-base leading-relaxed text-slate-200">
+            <span class="font-bold text-[#ff00a8]">4. Notificación:</span> Recibirás un SMS cuando el servicio esté activo. Si estás activando Aba TV GO por primera vez, recibirás tus credenciales de acceso en tu correo electrónico registrado.
+          </p>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <button onclick="goToStep('3')" class="glow-magenta-btn text-white text-lg font-bold px-12 py-3.5 rounded-full cursor-pointer transition-all duration-300 transform active:scale-95 mb-4">
+        Suscribirme
+      </button>
+
+      <!-- Subtext -->
+      <p class="text-xs sm:text-sm text-slate-300 max-w-md leading-snug mb-4 sm:mb-6">
+        Al hacer clic en «Suscribirme» se activará tu suscripción y aceptarás los términos y condiciones del servicio.
+      </p>
+
+      <!-- Botón Atrás con icono -->
+      <button onclick="goBack()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#ff00a8] bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(255,0,168,0.4)] transform active:scale-95">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Atrás</span>
+      </button>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- PASO 3: NUEVO FORMULARIO DE REGISTRO (GOOGLE FORMS BACKEND VIA IFRAME) -->
+    <!-- ========================================== -->
+    <section id="step-3" class="step-content hidden-step flex-col items-center text-center w-full max-w-md">
+      <h2 id="form-step-title" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+        Confirmación de Datos
+      </h2>
+      <p id="form-step-subtitle" class="text-sm sm:text-base text-slate-200 mb-6">
+        Todos los campos son obligatorios. Ingresa tus datos para procesar la solicitud.
+      </p>
+
+      <!-- White Form Card -->
+      <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl w-full text-left relative z-20 mb-6 border border-slate-100">
+        <form id="registro-form"
+              action="https://docs.google.com/forms/d/e/1FAIpQLSe5zrLMKMVqCeh8FZy4DyvJT_VPxY2n8MXs9vWvdFP7xUnAuQ/formResponse"
+              method="POST"
+              target="hidden_iframe"
+              onsubmit="handleFormSubmit(event)"
+              class="space-y-4"
+              novalidate>
+
+          <!-- Campo 1: Nombre y apellido del titular (entry.1896440067) -->
+          <div>
+            <label for="nombre" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1">
+              Nombre y apellido del titular: <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="nombre" 
+              name="entry.1896440067" 
+              required 
+              placeholder="Ej. Juan Pérez" 
+              class="custom-input px-3.5 py-2.5 rounded-lg w-full text-sm font-medium"
+            >
+            <p id="error-nombre" class="text-xs text-red-500 font-semibold mt-1 hidden"></p>
+          </div>
+
+          <!-- Campo 2: Cédula de Identidad (entry.1283632275) -->
+          <div>
+            <label for="cedula" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1">
+              Cédula de Identidad: <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="cedula" 
+              name="entry.1283632275" 
+              required 
+              pattern="^[0-9]{1,8}$"
+              inputmode="numeric"
+              maxlength="8"
+              placeholder="Ej. 12345678" 
+              class="custom-input px-3.5 py-2.5 rounded-lg w-full text-sm font-medium"
+            >
+            <p id="error-cedula" class="text-xs text-red-500 font-semibold mt-1 hidden"></p>
+          </div>
+
+          <!-- Campo 3: Celular de contacto (entry.619721954) -->
+          <div>
+            <label for="telefono" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1">
+              Número celular de contacto: <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="tel" 
+              id="telefono" 
+              name="entry.619721954" 
+              required 
+              pattern="^0?4(12|14|16|24|22|26)[0-9]{7}$"
+              inputmode="numeric"
+              placeholder="Ej. 04141234567 o 4141234567" 
+              class="custom-input px-3.5 py-2.5 rounded-lg w-full text-sm font-medium"
+            >
+            <p id="error-telefono" class="text-xs text-red-500 font-semibold mt-1 hidden"></p>
+          </div>
+
+          <!-- Campo 4: Correo electrónico (entry.555911472) -->
+          <div>
+            <label for="email" class="block text-xs sm:text-sm font-bold text-slate-900 mb-1">
+              Correo electrónico: <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="entry.555911472" 
+              required 
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              placeholder="Ej. usuario@correo.com" 
+              class="custom-input px-3.5 py-2.5 rounded-lg w-full text-sm font-medium"
+            >
+            <p id="error-email" class="text-xs text-red-500 font-semibold mt-1 hidden"></p>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" id="submit-btn" class="glow-magenta-btn w-full text-white font-bold py-3 px-6 rounded-full text-base transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
+              <span id="btn-text">Enviar datos</span>
+              <span id="btn-spinner" class="hidden animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></span>
+            </button>
+          </div>
+        </form>
+
+        <!-- iframe oculto para envío seguro a Google Forms sin redirecciones -->
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+      </div>
+
+      <!-- Disclaimer text outside form card -->
+      <p id="disclaimer-text" class="text-xs sm:text-sm text-slate-200 mb-4 sm:mb-6">
+        Al hacer clic en «Enviar datos» se procesará tu solicitud de activación.
+      </p>
+
+      <!-- Botón Atrás con icono -->
+      <button onclick="goBack()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#ff00a8] bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(255,0,168,0.4)] transform active:scale-95">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Atrás</span>
+      </button>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- PASO 4: PANTALLA DE ÉXITO Y CONFIRMACIÓN -->
+    <!-- ========================================== -->
+    <section id="step-4" class="step-content hidden-step flex-col items-center text-center w-full max-w-md">
+      <div class="bg-slate-950/85 border border-emerald-500/30 rounded-3xl p-8 backdrop-blur-md shadow-2xl w-full flex flex-col items-center mb-4 sm:mb-6">
+        <!-- Checkmark icon -->
+        <div class="w-16 h-16 bg-emerald-500/20 border-2 border-emerald-400 rounded-full flex items-center justify-center text-emerald-400 text-3xl font-bold mb-4 shadow-[0_0_20px_rgba(52,211,153,0.4)]">
+          ✓
+        </div>
+        
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+          ¡Solicitud recibida con éxito!
+        </h2>
+        
+        <p id="success-plan-message" class="text-sm text-slate-300 mb-6 leading-relaxed">
+          En las próximas 24 a 48 horas activaremos tu servicio para que comiences a disfrutar del mejor entretenimiento con Aba TV GO.
+        </p>
+
+        <div id="confirmation-details" class="w-full bg-slate-900/90 border border-white/10 rounded-xl p-4 text-xs text-left space-y-2 text-slate-300 mb-6">
+          <p><span class="font-semibold text-slate-400">Plan solicitado:</span> <span id="summary-plan" class="text-[#00d2ff] font-bold">Aba TV GO</span></p>
+          <p><span class="font-semibold text-slate-400">Titular:</span> <span id="summary-name" class="text-white font-bold">Juan Pérez</span></p>
+          <p><span class="font-semibold text-slate-400">Cédula:</span> <span id="summary-cedula" class="text-white font-bold">12345678</span></p>
+          <p><span class="font-semibold text-slate-400">Número celular de contacto:</span> <span id="summary-telefono" class="text-white font-bold">04141234567</span></p>
+          <p><span class="font-semibold text-slate-400">Correo electrónico:</span> <span id="summary-email" class="text-white font-bold">usuario@correo.com</span></p>
+          <p><span class="font-semibold text-slate-400">Costo:</span> <span id="summary-cost" class="text-emerald-400 font-bold">Sin costo adicional</span></p>
+        </div>
+
+        <button onclick="goToStep('1')" class="w-full border border-white/20 hover:border-[#ff00a8] text-slate-200 hover:text-white font-semibold py-2.5 rounded-full transition-all text-sm cursor-pointer">
+          Volver al inicio
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer Logo CANTV -->
+    <footer class="w-full pt-1 pb-2 text-center z-10">
+      <div class="inline-block transform hover:scale-105 transition-transform duration-300">
+        <img src="img/logo-CANTV-01-1.png" alt="Logo Cantv" class="h-14 sm:h-16 md:h-20 mx-auto drop-shadow-md">
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Interactive JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
