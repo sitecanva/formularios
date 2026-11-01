@@ -14,14 +14,14 @@ Landing page interactiva para la activación de **Aba TV GO** y la suscripción 
 2. **Paso 2.1 - Términos y Condiciones (Aba TV GO sin costo):**
    - 1) El Plan Ultra de Aba TV GO (+120 canales) está incluido sin costo adicional para usuarios Aba Ultra.
    - 2) Notificación: Recibirás un SMS cuando el servicio esté activo. Si estás activando Aba TV GO por primera vez, tus credenciales de acceso llegarán a tu correo electrónico registrado.
-   - Botón de acción: **Activar Aba TV GO**.
+   - Botón de acción: **Continuar**.
 
 3. **Paso 2.2 - Términos y Condiciones (One Baseball Network):**
    - 1) Servicio base incluido.
    - 2) Paquete premium (Ref. 5 al mes).
    - 3) Facturación en factura de Aba Ultra.
    - 4) Notificación vía SMS / correo registrado.
-   - Botón de acción: **Suscribirme**.
+   - Botón de acción: **Continuar**.
 
 4. **Paso 3 - Formulario de Registro:**
    - Captura de datos del titular con validaciones en cliente en tiempo real.
