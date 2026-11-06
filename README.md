@@ -7,7 +7,7 @@ Landing page interactiva para la activación de **Aba TV GO** y la suscripción 
 ## 📋 Flujo de la Aplicación
 
 1. **Paso 1 - Oferta Principal:**
-   - **Caja Neón 1:** Logotipo de Aba TV GO (+120 canales incluidos), etiqueta llamativa *«Activar únicamente Aba TV GO»* y botón directo **«Activar Aba TV GO (sin costo)»**.
+   - **Caja Neón 1:** Logotipo de Aba TV GO (+120 canales incluidos) y botón directo **«Activar Aba TV GO (sin costo)»**.
    - **Caja Neón 2:** Logotipo de One Baseball Network (La LVBP en vivo, Ref. 5 / mes), etiqueta llamativa *«Incluye Aba TV GO (+120 canales) sin costo adicional»* y botón directo **«Suscribirme a One Baseball (Ref 5 /mes)»**.
    - Pregunta destacada: *«¿Listo para vivir toda la pasión del béisbol?»*.
 
