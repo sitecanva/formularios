@@ -48,7 +48,7 @@ function selectPlan(plan) {
   const btnText = document.getElementById('btn-text');
 
   if (plan === 'abatvgo') {
-    if (formTitle) formTitle.innerHTML = 'Aba TV GO<br><span class="text-[#00d2ff]">Plan Ultra (+120 canales)</span>';
+    if (formTitle) formTitle.innerHTML = 'Aba TV GO<br><span class="text-[#66ffff]">Plan Ultra (+120 canales)</span>';
     if (formSubtitle) formSubtitle.innerText = 'Ingresa tus datos para activar tu servicio sin costo adicional.';
     if (disclaimerText) disclaimerText.innerText = 'Al hacer clic en «Enviar datos» se activará tu servicio Aba TV GO sin costo adicional.';
     if (btnText) btnText.innerText = 'Activar Aba TV GO';
@@ -130,7 +130,7 @@ function handleFormSubmit(e) {
   if (selectedPlan === 'abatvgo') {
     if (summaryPlan) summaryPlan.innerText = 'Aba TV GO (Plan Ultra +120 canales)';
     if (summaryCost) summaryCost.innerText = 'Sin costo adicional';
-    if (successMsg) successMsg.innerText = 'En las próximas 24 a 48 horas activaremos tu servicio para que comiences a disfrutar del mejor entretenimiento con Aba TV GO.';
+    if (successMsg) successMsg.innerText = 'En las próximas 24 a 48 horas activaremos tu servicio para que comiences a disfrutar de todo el contenido que te ofrece Aba TV GO, el streaming de Cantv.';
   } else {
     if (summaryPlan) summaryPlan.innerText = 'Paquete Premium One Baseball Network';
     if (summaryCost) summaryCost.innerText = 'Ref. 5 / mes';
